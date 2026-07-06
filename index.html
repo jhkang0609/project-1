@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 드림 크리에이터 - 프리미엄 로또 번호 추천소</title>
+    <meta name="description" content="우주의 기운과 꿈 분석, 사주 운세를 결합한 가장 과학적이고 인터랙티브한 프리미엄 로또 번호 추천 서비스입니다. 지금 무료로 대박 행운의 조합을 생성해보세요!">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="로또 드림 크리에이터 - 프리미엄 로또 번호 추천">
+    <meta property="og:description" content="인터랙티브 추첨 애니메이션과 꿈 해몽 검색, 사주 운세 분석을 결합한 스마트 로또 번호 추천기.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cosmic Background Stars and Nebula Effect -->
+    <div class="stars-bg"></div>
+    <div class="nebula-bg"></div>
+
+    <div class="app-container">
+        <!-- Main Header -->
+        <header class="app-header">
+            <div class="logo-container">
+                <span class="logo-icon">✨</span>
+                <h1>LOTTO DREAM CREATOR</h1>
+            </div>
+            <p class="subtitle">우주의 무작위성과 꿈의 해석을 담아 당신의 행운을 조합합니다</p>
+        </header>
+
+        <!-- Main Dashboard Content Grid -->
+        <main class="dashboard-grid">
+            
+            <!-- Left Side: Interactive Drawer and Results Display -->
+            <section class="visualizer-card glass-panel" aria-label="로또 번호 추첨 화면">
+                <div class="card-header">
+                    <h2>행운의 추첨기</h2>
+                    <div class="sound-toggle-wrapper">
+                        <label for="sound-toggle" class="sound-label">효과음</label>
+                        <button id="sound-toggle" class="btn-icon" aria-label="효과음 켜기/끄기">
+                            <svg class="sound-on-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                            <svg class="sound-off-icon hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ball Chamber Container -->
+                <div class="chamber-container">
+                    <canvas id="chamber-canvas" width="400" height="400"></canvas>
+                    <div class="chamber-glass-shine"></div>
+                    <div class="chamber-stand"></div>
+                </div>
+
+                <!-- Current Result Layout -->
+                <div class="balls-result-display">
+                    <h3>이번 회차 추천 번호</h3>
+                    <div class="balls-row" id="balls-row-container">
+                        <div class="ball-placeholder">?</div>
+                        <div class="ball-placeholder">?</div>
+                        <div class="ball-placeholder">?</div>
+                        <div class="ball-placeholder">?</div>
+                        <div class="ball-placeholder">?</div>
+                        <div class="ball-placeholder">?</div>
+                    </div>
+                </div>
+
+                <!-- Analysis Summary for Current Draw -->
+                <div class="quick-stats-container hidden" id="quick-stats-panel">
+                    <div class="stat-badge">
+                        <span class="stat-label">홀:짝 비율</span>
+                        <span class="stat-value" id="odd-even-ratio">0 : 0</span>
+                    </div>
+                    <div class="stat-badge">
+                        <span class="stat-label">번호 합계</span>
+                        <span class="stat-value" id="sum-value">0</span>
+                    </div>
+                    <div class="stat-badge">
+                        <span class="stat-label">평균값</span>
+                        <span class="stat-value" id="avg-value">0.0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Side: Recommendation Controls -->
+            <section class="control-card glass-panel" aria-label="로또 번호 생성 옵션">
+                <!-- Modes Navigation Tab -->
+                <nav class="mode-tabs" role="tablist">
+                    <button id="tab-auto" class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-auto">
+                        <span class="tab-icon">⚡</span> 자동 무작위
+                    </button>
+                    <button id="tab-filter" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-filter">
+                        <span class="tab-icon">🎯</span> 필터 조건
+                    </button>
+                    <button id="tab-dream" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-dream">
+                        <span class="tab-icon">💭</span> 꿈 해몽
+                    </button>
+                    <button id="tab-horoscope" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-horoscope">
+                        <span class="tab-icon">🪐</span> 사주 운세
+                    </button>
+                </nav>
+
+                <!-- Tab Panels -->
+                <div class="tab-contents">
+                    <!-- Tab 1: Auto Generate -->
+                    <div id="panel-auto" class="tab-panel active" role="tabpanel">
+                        <h3>완전 자동 추천</h3>
+                        <p class="panel-desc">어떤 조건도 없이 완벽한 자연의 무작위성(Pseudo-Random)을 기반으로 로또 행운 번호를 즉시 추출합니다.</p>
+                        <div class="generate-btn-container">
+                            <button id="btn-generate-auto" class="btn-generate">
+                                <span class="glowing-effect"></span>
+                                행운의 번호 받기
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Filter Options -->
+                    <div id="panel-filter" class="tab-panel" role="tabpanel">
+                        <h3>조건부 조합 추천</h3>
+                        <p class="panel-desc">반드시 포함하고 싶은 고정수와 제외하고 싶은 번호를 지정하여 분석 조합을 필터링 생성합니다.</p>
+                        
+                        <div class="filter-section">
+                            <label class="section-title">포함할 번호 (최대 5개)</label>
+                            <div class="number-selector-grid" id="include-numbers-grid">
+                                <!-- Generated by JS: 1 to 45 numbers checkbox buttons -->
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <label class="section-title">제외할 번호 (제외수)</label>
+                            <div class="number-selector-grid" id="exclude-numbers-grid">
+                                <!-- Generated by JS: 1 to 45 numbers checkbox buttons -->
+                            </div>
+                        </div>
+
+                        <div class="generate-btn-container">
+                            <button id="btn-generate-filter" class="btn-generate">
+                                <span class="glowing-effect"></span>
+                                필터 적용 번호 받기
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: Dream Analyzer -->
+                    <div id="panel-dream" class="tab-panel" role="tabpanel">
+                        <h3>꿈 해몽 키워드 분석</h3>
+                        <p class="panel-desc">지난 밤 꿈에 나왔던 중요한 상징이나 키워드를 검색해보세요. 해몽 분석 데이터와 매핑된 번호를 추천해 드립니다.</p>
+                        
+                        <div class="dream-search-box">
+                            <input type="text" id="dream-input" placeholder="예: 돼지, 대통령, 똥, 불, 황금, 이빨, 뱀..." aria-label="꿈 해몽 단어 입력">
+                            <button id="btn-dream-search" class="btn-secondary">검색 & 적용</button>
+                        </div>
+
+                        <div class="dream-keywords-suggest">
+                            <span class="suggest-label">많이 찾는 꿈:</span>
+                            <div class="tags-row" id="dream-tags-container">
+                                <button class="tag-btn" data-word="돼지">🐷 돼지</button>
+                                <button class="tag-btn" data-word="대통령">👑 대통령</button>
+                                <button class="tag-btn" data-word="불">🔥 불</button>
+                                <button class="tag-btn" data-word="똥">💩 똥</button>
+                                <button class="tag-btn" data-word="물">💧 물</button>
+                                <button class="tag-btn" data-word="조상">👵 조상님</button>
+                                <button class="tag-btn" data-word="뱀">🐍 뱀</button>
+                                <button class="tag-btn" data-word="금물건">💎 보석/금</button>
+                            </div>
+                        </div>
+
+                        <div class="dream-result-message hidden" id="dream-result-msg">
+                            <!-- Show selected keywords description and numbers mapping -->
+                        </div>
+
+                        <div class="generate-btn-container">
+                            <button id="btn-generate-dream" class="btn-generate disabled" disabled>
+                                <span class="glowing-effect"></span>
+                                꿈의 운명 번호 받기
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tab 4: Horoscope & Luck -->
+                    <div id="panel-horoscope" class="tab-panel" role="tabpanel">
+                        <h3>오늘의 사주 & 행운 추천</h3>
+                        <p class="panel-desc">당신의 생년월일과 태어난 시간을 우주의 행운 주기와 결합하여 고유한 일일 번호를 해싱 연산해 냅니다.</p>
+                        
+                        <div class="horoscope-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="horo-name">이름</label>
+                                    <input type="text" id="horo-name" placeholder="홍길동" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="horo-birth">생년월일</label>
+                                    <input type="date" id="horo-birth" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="horo-time">태어난 시간 (선택)</label>
+                                    <select id="horo-time">
+                                        <option value="unknown">모름</option>
+                                        <option value="자">자시 (23:30 ~ 01:29)</option>
+                                        <option value="축">축시 (01:30 ~ 03:29)</option>
+                                        <option value="인">인시 (03:30 ~ 05:29)</option>
+                                        <option value="묘">묘시 (05:30 ~ 07:29)</option>
+                                        <option value="진">진시 (07:30 ~ 09:29)</option>
+                                        <option value="사">사시 (09:30 ~ 11:29)</option>
+                                        <option value="오">오시 (11:30 ~ 13:29)</option>
+                                        <option value="미">미시 (13:30 ~ 15:29)</option>
+                                        <option value="신">신시 (15:30 ~ 17:29)</option>
+                                        <option value="유">유시 (17:30 ~ 19:29)</option>
+                                        <option value="술">술시 (19:30 ~ 21:29)</option>
+                                        <option value="해">해시 (21:30 ~ 23:29)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="generate-btn-container">
+                            <button id="btn-generate-horo" class="btn-generate">
+                                <span class="glowing-effect"></span>
+                                오늘의 사주 번호 추출
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Lower Section: Generation History Log -->
+        <section class="history-section glass-panel" aria-label="로또 번호 추천 기록">
+            <div class="history-header">
+                <h2>추천 이력 보관함</h2>
+                <div class="history-actions">
+                    <button id="btn-clear-history" class="btn-tertiary">전체 삭제</button>
+                    <button id="btn-download-history" class="btn-tertiary">텍스트 다운로드</button>
+                </div>
+            </div>
+            
+            <div class="history-table-container">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">번호 생성 시각</th>
+                            <th scope="col">추천 유형</th>
+                            <th scope="col">추천 번호</th>
+                            <th scope="col">홀:짝 / 합</th>
+                            <th scope="col">작업</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-list-body">
+                        <!-- History items generated dynamically by JS -->
+                        <tr id="history-empty-row">
+                            <td colspan="5" class="empty-message">아직 생성된 행운 번호가 없습니다. 번호를 추천 받아보세요!</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Footer Info -->
+        <footer class="app-footer">
+            <p>© 2026 LOTTO DREAM CREATOR. 이 프로그램은 과학적 운세 분석 및 가상 번호 필터링 기능을 탑재한 시뮬레이터입니다. 건전한 게임 이용을 권장합니다.</p>
+        </footer>
+    </div>
+
+    <!-- Notification Toast Popup -->
+    <div id="toast" class="toast-notification hidden" role="alert" aria-live="assertive"></div>
+
+    <!-- Script Entrypoint -->
+    <script src="app.js"></script>
+</body>
+</html>
