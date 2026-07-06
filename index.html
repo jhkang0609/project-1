@@ -264,6 +264,37 @@
             </div>
         </section>
 
+        <!-- Partnership Inquiry Section -->
+        <section class="inquiry-section glass-panel" aria-label="제휴 문의">
+            <div class="inquiry-header">
+                <h2>🤝 제휴 문의</h2>
+                <p class="inquiry-desc">행운의 메타몽과 함께할 비즈니스 파트너의 문의를 기다립니다.</p>
+            </div>
+            
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="inquiry-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inquiry-name">성함 또는 회사명</label>
+                        <input type="text" id="inquiry-name" name="name" placeholder="예: 메타몽 주식회사" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry-email">이메일 주소</label>
+                        <input type="email" id="inquiry-email" name="email" placeholder="example@domain.com" required>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label for="inquiry-message">문의 내용</label>
+                    <textarea id="inquiry-message" name="message" rows="4" placeholder="제휴 제안서 내용 또는 문의 내용을 상세히 적어주세요." required></textarea>
+                </div>
+                <div class="generate-btn-container" style="margin-top: 1.5rem; justify-content: flex-start;">
+                    <button type="submit" class="btn-generate" style="width: auto; padding: 0 2rem;">
+                        <span class="glowing-effect"></span>
+                        제휴 문의 제출하기
+                    </button>
+                </div>
+            </form>
+        </section>
+
         <!-- Footer Info -->
         <footer class="app-footer">
             <p>© 2026 LOTTO DREAM CREATOR. 이 프로그램은 과학적 운세 분석 및 가상 번호 필터링 기능을 탑재한 시뮬레이터입니다. 건전한 게임 이용을 권장합니다.</p>
